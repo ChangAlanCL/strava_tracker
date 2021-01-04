@@ -6,16 +6,14 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
   constructor(private oauthService: OAuthService, private authService: AuthService) {
     this.oauthService.configure(environment.authCodeFlowConfig);
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   tryLogin(): void {
     console.log('----- using oauth lib -----');

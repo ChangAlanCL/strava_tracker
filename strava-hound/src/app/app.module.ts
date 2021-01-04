@@ -10,20 +10,16 @@ import { HomeComponent } from './components/home/home.component';
 import { CallbackComponent } from './components/callback/callback.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    CallbackComponent
-  ],
+  declarations: [AppComponent, HomeComponent, CallbackComponent],
   imports: [
     HttpClientModule,
     OAuthModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AppMaterialModule
+    AppMaterialModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

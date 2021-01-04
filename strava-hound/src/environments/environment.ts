@@ -16,12 +16,12 @@ const authCodeFlowConfig: AuthConfig = {
   tokenEndpoint: 'https://www.strava.com/oauth/token',
   userinfoEndpoint: 'https://www.strava.com/api/v3/athlete',
   showDebugInformation: true,
-  oidc: false
+  oidc: false,
 };
 
 export const environment = {
   production: false,
-  authCodeFlowConfig
+  authCodeFlowConfig,
 };
 
 /*

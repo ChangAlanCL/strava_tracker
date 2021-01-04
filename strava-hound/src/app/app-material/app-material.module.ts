@@ -5,14 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    MatToolbarModule,
-    MatButtonModule,
-  ],
-  exports: [
-    MatToolbarModule,
-    MatButtonModule,
-  ]
+  imports: [CommonModule, MatToolbarModule, MatButtonModule],
+  exports: [MatToolbarModule, MatButtonModule],
 })
-export class AppMaterialModule { }
+export class AppMaterialModule {}

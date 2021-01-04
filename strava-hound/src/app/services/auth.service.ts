@@ -1,22 +1,14 @@
 // tslint:disable: no-non-null-assertion
-import {
-  HttpClient,
-  HttpParams
-} from '@angular/common/http';
-import {
-  Injectable
-} from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import {
-  environment
-} from 'src/environments/environment';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   constructor(private http: HttpClient, private router: Router) {}
 
   public login(): void {
