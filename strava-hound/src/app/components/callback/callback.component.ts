@@ -4,8 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-callback',
-  templateUrl: './callback.component.html',
-  styleUrls: ['./callback.component.css'],
+  template: `<div></div>`,
 })
 export class CallbackComponent implements OnInit {
   constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router) {}
@@ -14,7 +13,7 @@ export class CallbackComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       if (params?.code !== undefined) {
         this.authService.saveAuthCode(params.code);
-        this.authService.getTokens();
+        this.authService.fetchTokens().add(() => this.router.navigate(['/']));
       } else {
         this.router.navigate(['error']);
       }

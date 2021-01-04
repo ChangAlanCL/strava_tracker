@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { OAuthService } from 'angular-oauth2-oidc';
+import { Athlete } from 'src/app/models/Athlete';
 import { AuthService } from 'src/app/services/auth.service';
-import { environment } from 'src/environments/environment';
+import { StravaService } from 'src/app/services/strava.service';
 
 @Component({
   selector: 'app-home',
@@ -9,28 +9,32 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private oauthService: OAuthService, private authService: AuthService) {
-    this.oauthService.configure(environment.authCodeFlowConfig);
+  public hasAuthorized = false;
+  public athlete!: Athlete | null;
+  public a: any;
+
+  constructor(private authService: AuthService, private stravaService: StravaService) {}
+
+  ngOnInit(): void {
+    this.hasAuthorized = this.authService.hasAuthorized();
+
+    if (this.hasAuthorized) {
+      this.athlete = this.authService.getAthleteDetails();
+      this.stravaService.getLoggedInAthlete().subscribe((x) => (this.a = x));
+
+      const now = Math.round(Date.now() / 1000);
+      const monthInSeconds = 30 * 24 * 60 * 60;
+      const past = now - monthInSeconds;
+      this.stravaService.getLoggedInAthleteActivities(now, past).subscribe((x) => console.log(x));
+    }
   }
 
-  ngOnInit(): void {}
-
-  tryLogin(): void {
-    console.log('----- using oauth lib -----');
-    this.oauthService.initCodeFlow();
-  }
-
-  loginWithCustom(): void {
+  public authenticateViaStrava(): void {
     console.log('~~~~~loggin with auth service~~~~~');
     this.authService.login();
   }
 
-  tryLogout(): void {
-    console.log('trying to log out from Strava');
-    this.oauthService.logOut();
-  }
-
-  getAccessToken(): void {
-    console.log('not implemented');
+  public logout(): void {
+    this.authService.logout().add(() => (this.hasAuthorized = this.authService.hasAuthorized()));
   }
 }

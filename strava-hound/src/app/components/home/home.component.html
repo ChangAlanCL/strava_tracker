@@ -1,4 +1,26 @@
-<button mat-flat-button color="accent" (click)="tryLogin()">Authorize Tracker Hound</button>
-<button mat-flat-button color="accent" (click)="loginWithCustom()">Use Custom Login</button>
-<button mat-flat-button color="primary" (click)="tryLogout()">Logout</button>
-<button mat-stroked-button (click)="getAccessToken()">Get Access Token</button>
+<div *ngIf="hasAuthorized; else tryActivate">
+  <mat-toolbar color="primary">
+    <span>Progress Hound</span>
+    <span class="spacer"></span>
+    <button mat-button (click)="logout()">Log out</button>
+  </mat-toolbar>
+  <div style="margin: 25px">
+    <pre>{{ athlete | json }}</pre>
+    <pre>{{ a | json }}</pre>
+  </div>
+</div>
+<ng-template #tryActivate>
+  <div class="home-bg" style="background-image: url('../assets/app-bg.jpg')">
+    <mat-card class="home-card">
+      <mat-card-header>
+        <mat-card-title>Strava Hound</mat-card-title>
+        <mat-card-subtitle>Training progress tracking tool</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content style="text-align: center">
+        <img src="../../../assets/logo.png" />
+        <p>Authorize your Strava data by sign in below</p>
+        <button mat-raised-button class="strava-btn" (click)="authenticateViaStrava()">Log in using Strava</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-template>

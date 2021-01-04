@@ -13,6 +13,7 @@ const authCodeFlowConfig: AuthConfig = {
   scope: 'read_all,activity:read_all',
   issuer: 'https://www.strava.com',
   loginUrl: 'https://www.strava.com/oauth/authorize',
+  logoutUrl: 'https://www.strava.com/oauth/deauthorize',
   tokenEndpoint: 'https://www.strava.com/oauth/token',
   userinfoEndpoint: 'https://www.strava.com/api/v3/athlete',
   showDebugInformation: true,
