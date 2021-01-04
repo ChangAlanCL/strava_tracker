@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { OAuthService } from 'angular-oauth2-oidc';
-import { environment } from 'src/environments/environment';
-import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +6,9 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  accessToken: string | undefined;
 
-  constructor(private oauthService: OAuthService, private authService: AuthService) {
-    this.oauthService.configure(environment.authCodeFlowConfig);
-  }
+  constructor() { }
+
 
   ngOnInit(): void {}
 }
