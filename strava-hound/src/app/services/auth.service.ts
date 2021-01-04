@@ -35,10 +35,9 @@ export class AuthService {
     params = params.append('code', this._authCode);
     params = params.append('grant_type', 'authorization_code');
 
-    this.http.post(this._auth.tokenEndpoint!, null, {params})
-      .subscribe(res => {
-        console.log(res);
-      });
+    this.http.post(this._auth.tokenEndpoint!, null, { params }).subscribe((res) => {
+      console.log(res);
+    });
   }
 
   public saveAuthCode(code: string): void {

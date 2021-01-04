@@ -1,4 +1,4 @@
-import { Athlete } from "./Athlete";
+import { Athlete } from './Athlete';
 
 // tslint:disable: variable-name
 export class StravaUser {
@@ -11,5 +11,3 @@ export class StravaUser {
     public athlete: Athlete
   ) {}
 }
-
-
