@@ -2,13 +2,37 @@
   <mat-toolbar color="primary">
     <span>Progress Hound</span>
     <span class="spacer"></span>
+    <span *ngIf="athlete">{{ athlete!.firstname }} {{ athlete!.lastname }}</span>
     <button mat-button (click)="logout()">Log out</button>
   </mat-toolbar>
   <div style="margin: 25px">
-    <pre>{{ athlete | json }}</pre>
-    <pre>{{ a | json }}</pre>
+    <div class="selection-box">
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a range</mat-label>
+        <mat-select [formControl]="dateRangeSelected">
+          <mat-option *ngFor="let d of DateRange" [value]="d">Last {{ d }} days</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!--Table-->
+    <table mat-table [dataSource]="activities">
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Date</th>
+        <td mat-cell *matCellDef="let e">{{ e.date }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="heartrate">
+        <th mat-header-cell *matHeaderCellDef>Avg Heart Rate</th>
+        <td mat-cell *matCellDef="let e">{{ e.heartrate }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr style="padding-right: 20px" mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
   </div>
 </div>
+
 <ng-template #tryActivate>
   <div class="home-bg" style="background-image: url('../assets/app-bg.jpg')">
     <mat-card class="home-card">

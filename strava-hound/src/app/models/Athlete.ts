@@ -27,3 +27,8 @@ export class Athlete {
     public shoes: any
   ) {}
 }
+
+export interface MetaAthlete {
+  id: number;
+  resource_state: number;
+}

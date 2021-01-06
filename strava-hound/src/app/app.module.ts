@@ -9,6 +9,7 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 import { HomeComponent } from './components/home/home.component';
 import { CallbackComponent } from './components/callback/callback.component';
 import { JwtInterceptor } from './jwt.interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, CallbackComponent],
@@ -16,9 +17,11 @@ import { JwtInterceptor } from './jwt.interceptor';
     HttpClientModule,
     OAuthModule.forRoot(),
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AppMaterialModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {

@@ -18,3 +18,14 @@
   background-color: #fc5200;
   color: white;
 }
+
+.selection-box {
+  margin: 10px 25px;
+  /* border: 1px #80808080 solid;
+  border-radius: 5px; */
+}
+
+.mat-header-cell,
+.mat-cell {
+  padding: 0 10px;
+}

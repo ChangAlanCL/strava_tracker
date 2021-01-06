@@ -21,13 +21,13 @@ export class StravaService {
     after: number,
     page: number = 1,
     perPage: number = 30
-  ): Observable<SummaryActivity> {
+  ): Observable<SummaryActivity[]> {
     let params = new HttpParams();
     params = params.append('before', before.toString());
     params = params.append('after', after.toString());
     params = params.append('page', page.toString());
     params = params.append('per_page', perPage.toString());
 
-    return this.http.get<SummaryActivity>(`${this.baseUrl}/athlete/activities`, { params });
+    return this.http.get<SummaryActivity[]>(`${this.baseUrl}/athlete/activities`, { params });
   }
 }
