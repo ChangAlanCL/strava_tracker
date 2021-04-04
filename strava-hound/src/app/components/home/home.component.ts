@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.hasAuthorized = this.authService.hasAuthorized();
-
+    console.log(this.hasAuthorized);
     if (this.hasAuthorized) {
       this.athlete = this.authService.getAthleteDetails();
       this._getActivities();

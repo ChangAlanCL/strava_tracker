@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 import { AuthConfig } from 'angular-oauth2-oidc';
-import { ClientId, ClientSecrets } from './secrets';
+import { ClientId, ClientSecrets } from 'src/secrets';
+
 
 const authCodeFlowConfig: AuthConfig = {
   clientId: ClientId,
